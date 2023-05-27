@@ -1,0 +1,73 @@
+class Api::ListsController < Api::ApiController
+  before_action :find_list, only: [ :show, :update, :destroy, :like, :dislike ]
+
+  def index
+    render json: current_user.lists
+  end
+
+  def show
+    render json: @list
+  end
+
+  def create
+    # list = current_user.lists << List.new(list_params)
+    current_user.lists << List.new(list_params)
+    list = current_user.lists.last
+
+      if list.save
+        render json: list, status: :created
+      else
+        render json: list.errors.full_messages, status: :unprocessable_entity
+      end
+  end
+
+  def update
+      if @list.update(list_params)
+        render json: @list, status: :ok
+      else
+        render json: {errors: @list.errorsfull_messages, status: :unprocessable_entity}
+      end
+  end
+
+  def destroy
+    # @list.items.each { |i| i.destroy } # feito no on_delete cascade
+    @list.destroy
+    render json: :no_content
+  end
+
+  # UM USER SÓ PODE DAR UM LIKE, O PROPRIO BANCO RECLAMA SE TENTAR DAR 2 OU MAIS ENTAO TRATAR NO FRONT
+  def like
+    # REMOVER QUANDO USAR CURRENT USER
+    user = User.find(like_params[:user_id])
+
+    if @list.likers << user
+      render json: user, status: :created
+    else
+      render json: user.errors.full_messages, status: :unprocessable_entity
+    end
+  end
+
+  def dislike
+
+    if @list.likers.delete(current_user)
+      render json: :no_content
+    else
+      render json: current_user.errors.full_messages, status: :unprocessable_entity
+    end
+  end
+
+  private
+    def find_list
+      @list = List.find(params[:id])
+    end
+
+    def list_params
+      params.permit(:title, :category_id)
+    end
+
+    # QUANDO TIVER CURRENT USER NAO PRECISA DISSO 
+    def like_params
+      params.permit(:user_id)
+    end
+  
+end
