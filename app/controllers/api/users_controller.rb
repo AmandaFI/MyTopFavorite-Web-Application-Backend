@@ -69,9 +69,11 @@ class Api::UsersController < Api::ApiController
   end
 
   def followed_users_lists
-    render json: current_user.followed_users.flat_map do |user| 
+
+    lists = current_user.followed_users.flat_map do |user| 
       user.lists.order(created_at: :desc).limit(3)
     end
+    render json: lists, each_serializer: CompleteListSerializer
     # lists = current_user.followed_users.map(&:lists).flatten
     # lists = current_user.followed_users.flat_map(&:lists)
     

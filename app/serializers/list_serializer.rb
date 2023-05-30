@@ -23,7 +23,8 @@ class ListSerializer < ActiveModel::Serializer
   attributes :id, :title, :likers_count, :items_count
 
   belongs_to :category
-  belongs_to :user
+  # belongs_to :user
+  # has_many :items, class_name: "ListItem"
 
   def likers_count
     object.likers.count
