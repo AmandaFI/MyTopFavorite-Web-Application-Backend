@@ -22,11 +22,12 @@ class   Api::ListItemsController < Api::ApiController
   end
 
   def update
-      if @list_item.update(create_params.except(:list_id))
-        render json: @list_item, status: :ok
-      else
-        render json: { errors: @list_item.errors.full_messages, status: :unprocessable_entity }
-      end
+    p params[:metadata]
+    if @list_item.update(update_params)
+      render json: @list_item, status: :ok
+    else
+      render json: { errors: @list_item.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -41,6 +42,10 @@ class   Api::ListItemsController < Api::ApiController
 
     def create_params
       params.permit(:external_api_identifier, :metadata, :rank, :title, :user_comment, :list_id)
+    end
+
+    def update_params
+      params.permit(:external_api_identifier, :rank, :title, :user_comment)
     end
 
     def find_list 
