@@ -35,15 +35,13 @@ class Api::ListsController < Api::ApiController
     render json: :no_content
   end
 
-  # UM USER SÓ PODE DAR UM LIKE, O PROPRIO BANCO RECLAMA SE TENTAR DAR 2 OU MAIS ENTAO TRATAR NO FRONT
+  
   def like
-    # REMOVER QUANDO USAR CURRENT USER
-    user = User.find(like_params[:user_id])
 
-    if @list.likers << user
-      render json: user, status: :created
+    if @list.likers << current_user
+      render json: current_user, status: :created
     else
-      render json: user.errors.full_messages, status: :unprocessable_entity
+      render json: current_user.errors.full_messages, status: :unprocessable_entity
     end
   end
 
@@ -63,11 +61,6 @@ class Api::ListsController < Api::ApiController
 
     def list_params
       params.permit(:title, :category_id)
-    end
-
-    # QUANDO TIVER CURRENT USER NAO PRECISA DISSO 
-    def like_params
-      params.permit(:user_id)
     end
   
 end

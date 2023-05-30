@@ -14,5 +14,13 @@
 #  index_users_on_email  (email) UNIQUE
 #
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :name, :email
+  attributes :id, :name, :email, :followers_count, :followed_users_count
+
+  def followers_count
+    object.followers.count
+  end
+
+  def followed_users_count
+    object.followed_users.count
+  end
 end

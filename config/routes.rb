@@ -5,8 +5,7 @@ Rails.application.routes.draw do
     # get 'authentication/login'
     # get 'authentication/logout'
     
-    resources :sessions, only: [ :create ]
-    resources :sessions do
+    resources :sessions, only: [ :create ] do
       delete '/', on: :collection, action: :destroy
     end
 

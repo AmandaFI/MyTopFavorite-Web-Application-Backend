@@ -22,7 +22,7 @@ class User < ApplicationRecord
 
   validates :name, :email, :encrypted_password, presence: true
 
-  # singleton method --> método de classe (ruby em tese possui somente metodo de instancia pq tecnicamente toda classe é uma instancia de outra classe)
+  # singleton method --> método de classe (ruby em tese possui somente metodo de instancia pois tecnicamente toda classe é uma instancia de outra classe)
   def self.authenticate(email, password)
     # Todas as versões abaixo funcionam
     # User.exists? email: email, password: password
@@ -30,8 +30,4 @@ class User < ApplicationRecord
     User.find_by(email: email, encrypted_password: password) 
 
   end
-
-  # validates: :follower_id, presence: true
-  # validates: :followed_id, presence: true
-  # validates_uniqueness_of :follower_id, scope: :followed_id
 end

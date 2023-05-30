@@ -2,6 +2,7 @@ class Api::SessionsController < Api::ApiController
 
   skip_before_action :authenticate_user, only: :create
 
+  # login
   def create
     user = User.authenticate(params[:email], params[:password])
 
@@ -17,7 +18,7 @@ class Api::SessionsController < Api::ApiController
     end
   end
 
-
+  # logout
   def destroy
     session.delete :logged_user_id
 

@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 Faker::Config.locale = :en
+
+
 puts 'Generating categories...\n'
 categories = 50.times.map do |i|
   print '.'

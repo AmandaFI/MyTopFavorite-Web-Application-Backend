@@ -76,3 +76,5 @@ gem "active_model_serializers", "~> 0.10.13"
 gem "faker", "~> 3.2"
 
 gem "annotate", "~> 3.2"
+
+gem 'rack-cors'

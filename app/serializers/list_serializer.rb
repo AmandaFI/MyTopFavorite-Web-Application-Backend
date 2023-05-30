@@ -28,4 +28,8 @@ class ListSerializer < ActiveModel::Serializer
   def likers_count
     object.likers.count
   end
+
+  def items_count
+    object.items.count
+  end
 end

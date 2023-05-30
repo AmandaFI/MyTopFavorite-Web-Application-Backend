@@ -28,6 +28,7 @@ class List < ApplicationRecord
   validates :title, presence: true
 
   def items_count   #metodo de instancia
+    # o mesmo que self.items.count
     items.count
   end
 end

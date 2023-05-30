@@ -3,11 +3,12 @@ class Api::ApiController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :authenticate_user
 
-  private
+  protected
 
     def authenticate_user
       if session[:logged_user_id]
-        # se não encontrar current_user será nil
+        # com o find, se não encontrar da o erro 404
+        # com o find_by nãoda erro e retorna nil
         @current_user = User.find(session[:logged_user_id])
       else
         head :unauthorized  # 401 
@@ -20,5 +21,6 @@ class Api::ApiController < ApplicationController
       # segundo ! nega o boolean da transformação anterior (será true)
     end
 
+    # get de current_user
     attr_reader :current_user
 end
