@@ -1,7 +1,7 @@
 class Api::UsersController < Api::ApiController
 
-  before_action :find_user_by_id, only: [ :destroy]
   skip_before_action :authenticate_user, only: [ :create ]
+  before_action :find_user_by_id, only: [ :destroy]
   # before_action :find_user_by_email, only: [:create]
 
   def index

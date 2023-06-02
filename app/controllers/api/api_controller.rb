@@ -4,6 +4,8 @@ class Api::ApiController < ApplicationController
   before_action :authenticate_user
 
   protected
+    # get de current_user
+    attr_reader :current_user
 
     def authenticate_user
       if session[:logged_user_id]
@@ -21,6 +23,4 @@ class Api::ApiController < ApplicationController
       # segundo ! nega o boolean da transformação anterior (será true)
     end
 
-    # get de current_user
-    attr_reader :current_user
 end

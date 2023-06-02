@@ -77,4 +77,4 @@ gem "faker", "~> 3.2"
 
 gem "annotate", "~> 3.2"
 
-gem 'rack-cors'
+gem 'rack-cors', "~> 2.0"

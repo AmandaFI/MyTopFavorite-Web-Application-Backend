@@ -18,7 +18,7 @@ end
 puts 'Generating users...\n'
 users = 30.times.map do |i| 
   print '.'
-  User.create! name: Faker::name, email: Faker::Internet.email, encrypted_password: Faker::Internet.password
+  User.create! name: Faker::name, email: Faker::Internet.email, encrypted_password: '12345'
 end
 
 puts 'Generating lists...\n'
@@ -37,4 +37,9 @@ lists = 100.times.map do |i|
       )
     end
   )
+end
+
+puts "\nGenerating followers..."
+users.each do |user|
+  user.followers << (users - [user]).sample(rand(10) + 1)
 end
