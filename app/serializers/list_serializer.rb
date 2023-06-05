@@ -20,7 +20,7 @@
 #  user_id      (user_id => users.id) ON DELETE => cascade
 #
 class ListSerializer < ActiveModel::Serializer
-  attributes :id, :title, :likers_count, :items_count
+  attributes :id, :title, :likers_count, :items_count, :created_at
 
   belongs_to :category
   # belongs_to :user

@@ -42,10 +42,11 @@ class   Api::ListItemsController < Api::ApiController
 
     def create_params
       params.permit(:external_api_identifier, :metadata, :rank, :title, :user_comment, :list_id)
+      # params.permit([:external_api_identifier, :metadata, :rank, :title, :user_comment, :list_id])
     end
 
     def update_params
-      params.permit(:external_api_identifier, :rank, :title, :user_comment)
+      params.permit(:external_api_identifier, :metadata, :rank, :title, :user_comment)
     end
 
     def find_list 

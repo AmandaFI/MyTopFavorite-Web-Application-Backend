@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     
     resources :sessions, only: [ :create ] do
       delete '/', on: :collection, action: :destroy
+      get :status, on: :collection
     end
 
     resources :categories, only: [ :index, :create, :show, :update, :destroy ]

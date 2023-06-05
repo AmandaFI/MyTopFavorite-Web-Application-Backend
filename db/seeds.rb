@@ -18,7 +18,7 @@ end
 puts 'Generating users...\n'
 users = 30.times.map do |i| 
   print '.'
-  User.create! name: Faker::name, email: Faker::Internet.email, encrypted_password: '12345'
+  User.create! name: Faker::Name.name, email: Faker::Internet.email, encrypted_password: '12345'
 end
 
 puts 'Generating lists...\n'
@@ -32,8 +32,9 @@ lists = 100.times.map do |i|
       ListItem.new(
         external_api_identifier: Faker::IDNumber.valid,
         rank: j,
-        title: Faker::Lorem.sentence,
-        metadata: [{x: 1, y: 2, z: 3}]
+        title: Faker::Movie.title,
+        metadata: {x: 1, y: 2, z: 3},
+        user_comment: Faker::Lorem.sentence(word_count: 15)
       )
     end
   )

@@ -9,7 +9,6 @@ class Api::SessionsController < Api::ApiController
     if user
       session[:logged_user_id] = user.id
       render json: user, status: :created
-      # session[:logged_user_id] = {value: user.id, same_site: nil, secure: true}
     else
       # session[:logged_user_id] = nil
       session.delete :logged_user_id
@@ -25,9 +24,8 @@ class Api::SessionsController < Api::ApiController
     head :no_content
   end
 
-  private
-    def create_params
-      params.permit(:email, :password)
-    end
+  def status
+    render json: current_user
+  end
 
 end
