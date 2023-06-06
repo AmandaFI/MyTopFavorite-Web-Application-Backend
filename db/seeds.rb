@@ -28,7 +28,7 @@ lists = 100.times.map do |i|
     title: Faker::Lorem.sentence, 
     user: users.sample, 
     category: categories.sample,
-    draft: true,
+    draft: Faker::Boolean.boolean,
     items: (rand(8) + 3).times.map do |j|
       ListItem.new(
         external_api_identifier: Faker::IDNumber.valid,

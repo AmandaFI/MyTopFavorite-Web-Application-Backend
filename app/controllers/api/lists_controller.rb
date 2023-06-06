@@ -7,7 +7,7 @@ class Api::ListsController < Api::ApiController
   end
 
   def show
-    render json: @list
+    render json: @list, serializer: CompleteListSerializer
   end
 
   def create

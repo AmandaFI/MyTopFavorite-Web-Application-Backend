@@ -65,7 +65,7 @@ class Api::UsersController < Api::ApiController
   def followed_users_lists
 
     lists = current_user.followed_users.flat_map do |user| 
-      user.lists.published.order(created_at: :desc)
+      user.lists.published.order(created_at: :desc).limit(per_page).offset(per_page * (page - 1))
     end
     render json: lists, each_serializer: CompleteListSerializer
     # lists = current_user.followed_users.map(&:lists).flatten
