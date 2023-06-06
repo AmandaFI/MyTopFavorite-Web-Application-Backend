@@ -7,7 +7,9 @@ class CreateListItems < ActiveRecord::Migration[7.0]
       t.integer :rank, null: false
       t.string :user_comment
 
-      t.json :metadata
+      # t.json :metadata
+      t.string :image_url
+      t.string :details
 
       t.timestamps
     end

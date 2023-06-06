@@ -1,8 +1,9 @@
 class Api::ListsController < Api::ApiController
   before_action :find_list, only: [ :show, :update, :destroy, :like, :dislike ]
 
+
   def index
-    render json: current_user.lists
+    render json: current_user.lists.order(updated_at: :desc).limit(per_page).offset(per_page * (page - 1))
   end
 
   def show
@@ -52,6 +53,14 @@ class Api::ListsController < Api::ApiController
     else
       render json: current_user.errors.full_messages, status: :unprocessable_entity
     end
+  end
+
+  def draft_lists
+    render json: current_user.lists.draft
+  end
+
+  def published_lists
+    render json: current_user.lists.published
   end
 
   private

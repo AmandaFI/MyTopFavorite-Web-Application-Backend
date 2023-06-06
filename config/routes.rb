@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     resources :lists, only: [ :index, :create, :show, :update, :destroy ] do
       post :like, on: :member
       delete :dislike, on: :member
+      get :draft_lists, on: :collection
+      get :published_lists, on: :collection
     end
 
     resources :users, only: [ :index, :create, :show, :update, :destroy ] do

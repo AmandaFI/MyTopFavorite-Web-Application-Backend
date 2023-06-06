@@ -3,8 +3,9 @@
 # Table name: list_items
 #
 #  id                      :integer          not null, primary key
+#  details                 :string
 #  external_api_identifier :string           not null
-#  metadata                :json
+#  image_url               :string
 #  rank                    :integer          not null
 #  title                   :string           not null
 #  user_comment            :string
@@ -21,7 +22,7 @@
 #  list_id  (list_id => lists.id) ON DELETE => cascade
 #
 class ListItemSerializer < ActiveModel::Serializer
-  attributes :id, :external_api_identifier, :metadata, :rank, :title, :user_comment
+  attributes :id, :external_api_identifier, :image_url, :details, :rank, :title, :user_comment
 
   belongs_to :list
 end

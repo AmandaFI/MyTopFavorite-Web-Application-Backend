@@ -11,6 +11,7 @@ class   Api::ListItemsController < Api::ApiController
   end
 
   def create
+
     @list.items << ListItem.new(create_params.except(:list_id))
     list_item = @list.items.last
 
@@ -19,10 +20,10 @@ class   Api::ListItemsController < Api::ApiController
     else
       render json: list_item.errors.full_messages, status: :unprocessable_entity
     end
+
   end
 
   def update
-    p params[:metadata]
     if @list_item.update(update_params)
       render json: @list_item, status: :ok
     else
@@ -41,12 +42,11 @@ class   Api::ListItemsController < Api::ApiController
     end
 
     def create_params
-      params.permit(:external_api_identifier, :metadata, :rank, :title, :user_comment, :list_id)
-      # params.permit([:external_api_identifier, :metadata, :rank, :title, :user_comment, :list_id])
+      params.permit(:list_id, :external_api_identifier, :image_url, :details, :rank, :title, :user_comment)
     end
 
     def update_params
-      params.permit(:external_api_identifier, :metadata, :rank, :title, :user_comment)
+      params.permit(:external_api_identifier, :image_url, :details, :rank, :title, :user_comment)
     end
 
     def find_list 

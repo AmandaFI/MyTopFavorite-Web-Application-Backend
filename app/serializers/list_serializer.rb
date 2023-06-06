@@ -3,6 +3,7 @@
 # Table name: lists
 #
 #  id          :integer          not null, primary key
+#  draft       :boolean          default(TRUE), not null
 #  title       :string(128)      not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
@@ -20,7 +21,7 @@
 #  user_id      (user_id => users.id) ON DELETE => cascade
 #
 class ListSerializer < ActiveModel::Serializer
-  attributes :id, :title, :likers_count, :items_count, :created_at
+  attributes :id, :title, :likers_count, :items_count, :created_at, :draft
 
   belongs_to :category
   # belongs_to :user

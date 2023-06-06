@@ -28,12 +28,15 @@ lists = 100.times.map do |i|
     title: Faker::Lorem.sentence, 
     user: users.sample, 
     category: categories.sample,
+    draft: true,
     items: (rand(8) + 3).times.map do |j|
       ListItem.new(
         external_api_identifier: Faker::IDNumber.valid,
         rank: j,
         title: Faker::Movie.title,
-        metadata: {x: 1, y: 2, z: 3},
+        # metadata: {x: 1, y: 2, z: 3},
+        image_url: Faker::Internet.url,
+        details: Faker::Date.between(from: '1920-09-23', to: '2023-09-25'),
         user_comment: Faker::Lorem.sentence(word_count: 15)
       )
     end

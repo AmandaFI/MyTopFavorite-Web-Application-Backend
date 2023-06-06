@@ -31,12 +31,6 @@ class Api::UsersController < Api::ApiController
   end
 
   def destroy
-    #ARRUMAR DELETAR USER
-    # já feito no on_delete cascade
-    # @user.lists.each do |l|
-    #   l.items.each { |i| i.destroy }
-    #   l.destroy
-    # end
     @user.destroy
     render json: :no_content
   end
@@ -71,7 +65,7 @@ class Api::UsersController < Api::ApiController
   def followed_users_lists
 
     lists = current_user.followed_users.flat_map do |user| 
-      user.lists.order(created_at: :desc).limit(3)
+      user.lists.published.order(created_at: :desc)
     end
     render json: lists, each_serializer: CompleteListSerializer
     # lists = current_user.followed_users.map(&:lists).flatten

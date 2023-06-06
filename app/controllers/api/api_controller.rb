@@ -2,10 +2,29 @@ class Api::ApiController < ApplicationController
 
   skip_before_action :verify_authenticity_token
   before_action :authenticate_user
+  before_action :snake_case_params
+
+  DEFAULT_PER_PAGE = 3
+  MAX_PER_PAGE = 100
 
   protected
     # get de current_user
     attr_reader :current_user
+
+    # memoization
+    def page 
+      @page ||= (params[:page] || 1).to_i
+    end
+
+    def per_page
+      @per_page ||= [ (params[:per_page] || DEFAULT_PER_PAGE).to_i, MAX_PER_PAGE].min
+    # per_page = [per_page, MAX_PER_PAGE].min
+    end
+
+
+    def snake_case_params
+      request.parameters.deep_transform_keys! &:underscore
+    end
 
     def authenticate_user
       if session[:logged_user_id]

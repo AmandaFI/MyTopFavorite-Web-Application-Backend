@@ -3,6 +3,7 @@
 # Table name: lists
 #
 #  id          :integer          not null, primary key
+#  draft       :boolean          default(TRUE), not null
 #  title       :string(128)      not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null

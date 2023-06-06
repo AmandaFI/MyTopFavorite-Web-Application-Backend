@@ -3,8 +3,9 @@
 # Table name: list_items
 #
 #  id                      :integer          not null, primary key
+#  details                 :string
 #  external_api_identifier :string           not null
-#  metadata                :json
+#  image_url               :string
 #  rank                    :integer          not null
 #  title                   :string           not null
 #  user_comment            :string

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_27_164337) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_06_144016) do
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -24,7 +24,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_27_164337) do
     t.string "title", null: false
     t.integer "rank", null: false
     t.string "user_comment"
-    t.json "metadata"
+    t.string "image_url"
+    t.string "details"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["list_id"], name: "index_list_items_on_list_id"
@@ -36,6 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_27_164337) do
     t.integer "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "draft", default: true, null: false
     t.index ["category_id"], name: "index_lists_on_category_id"
     t.index ["user_id"], name: "index_lists_on_user_id"
   end
