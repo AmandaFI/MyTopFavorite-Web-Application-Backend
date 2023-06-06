@@ -3,7 +3,8 @@ class Api::ListsController < Api::ApiController
 
 
   def index
-    render json: current_user.lists.order(updated_at: :desc).limit(per_page).offset(per_page * (page - 1))
+    render json: current_user.lists.order(updated_at: :desc)
+    #.limit(per_page).offset(per_page * (page - 1))
   end
 
   def show
@@ -61,6 +62,7 @@ class Api::ListsController < Api::ApiController
 
   def published_lists
     render json: current_user.lists.published
+    #.limit(per_page).offset(per_page * (page - 1))
   end
 
   private
