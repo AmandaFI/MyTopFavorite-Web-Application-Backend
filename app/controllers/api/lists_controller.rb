@@ -71,7 +71,7 @@ class Api::ListsController < Api::ApiController
     end
 
     def list_params
-      params.permit(:title, :category_id)
+      params.permit(:title, :category_id, :draft)
     end
   
 end
