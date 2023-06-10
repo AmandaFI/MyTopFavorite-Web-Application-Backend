@@ -13,6 +13,7 @@
 # Indexes
 #
 #  index_lists_on_category_id  (category_id)
+#  index_lists_on_created_at   (created_at)
 #  index_lists_on_user_id      (user_id)
 #
 # Foreign Keys
