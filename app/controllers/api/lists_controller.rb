@@ -1,10 +1,15 @@
 class Api::ListsController < Api::ApiController
   before_action :find_list, only: [ :show, :update, :destroy, :like, :dislike ]
+  before_action :find_user_by_id, only: [ :draft_lists, :published_lists, :index  ]
 
 
   def index
-    render json: current_user.lists.order(updated_at: :desc)
-    #.limit(per_page).offset(per_page * (page - 1))
+    if @user
+      render json: @user.lists.order(updated_at: :desc)
+      #.limit(per_page).offset(per_page * (page - 1))
+    else
+      render head :not_found
+    end
   end
 
   def show
@@ -57,17 +62,32 @@ class Api::ListsController < Api::ApiController
   end
 
   def draft_lists
-    render json: current_user.lists.draft
+    if @user
+      render json: @user.lists.draft.order(updated_at: :desc)
+    else 
+      render head :not_found
+    end
   end
 
   def published_lists
-    render json: current_user.lists.published
-    #.limit(per_page).offset(per_page * (page - 1))
+    if @user
+      if params[:complete_and_paginated]
+        render json: @user.lists.published.order(updated_at: :desc).limit(per_page).offset(per_page * (page - 1)), each_serializer: CompleteListSerializer
+      else
+        render json: @user.lists.published.order(updated_at: :desc)
+      end
+    else
+      render head :not_found
+    end
   end
 
   private
     def find_list
       @list = List.find(params[:id])
+    end
+
+    def find_user_by_id
+      @user = User.find(params[:id])
     end
 
     def list_params

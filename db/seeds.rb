@@ -21,6 +21,8 @@ users = 30.times.map do |i|
   User.create! name: Faker::Name.name, email: Faker::Internet.email, encrypted_password: '12345'
 end
 
+fake_urls = ['/wXqWR7dHncNRbxoEGybEy7QTe9h.jpg', '/wXqWR7dHncNRbxoEGybEy7QTe9h.jpg', '/9vaRPXj44Q2meHgt3VVfQufiHOJ.jpg', '/ay7xwXn1G9fzX9TUBlkGA584rGi.jpg', '/fNOH9f1aA7XRTzl1sAOx9iF553Q.jpg', '/oU7Oq2kFAAlGqbU4VoAE36g4hoI.jpg', '/momkKuWburNTqKBF6ez7rvhYVhE.jpg', '/oOleziEempUPu96jkGs0Pj6tKxj.jpg', '/snGwr2gag4Fcgx2OGmH9otl6ofW.jpg', '/hEjK9A9BkNXejFW4tfacVAEHtkn.jpg', '/y5Va1WXDX6nZElVirPrGxf6w99B.jpg', '/Nkgaj3X0W2jHQ1TzHEgWFpN3kJ.jpg', '/sizg1AU8f8JDZX4QIgE4pjUMBvx.jpg', '/yFihWxQcmqcaBR31QM6Y8gT6aYV.jpg', '/ei2qjTiDpgKGuoSEntPCSAIhuvQ.jpg']
+
 puts 'Generating lists...\n'
 lists = 100.times.map do |i|
   print '.'
@@ -35,7 +37,8 @@ lists = 100.times.map do |i|
         rank: j,
         title: Faker::Movie.title,
         # metadata: {x: 1, y: 2, z: 3},
-        image_url: Faker::Internet.url,
+        # image_url: Faker::Internet.url,
+        image_url: fake_urls.sample,
         details: Faker::Date.between(from: '1920-09-23', to: '2023-09-25'),
         user_comment: Faker::Lorem.sentence(word_count: 15)
       )

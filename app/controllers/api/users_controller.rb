@@ -1,8 +1,7 @@
 class Api::UsersController < Api::ApiController
 
   skip_before_action :authenticate_user, only: [ :create ]
-  before_action :find_user_by_id, only: [ :destroy]
-  # before_action :find_user_by_email, only: [:create]
+  before_action :find_user_by_id, only: [ :destroy, :show ]
 
   def index
     @users = User.all
@@ -10,7 +9,11 @@ class Api::UsersController < Api::ApiController
   end
 
   def show
-    render json: current_user
+    if @user
+      render json: @user
+    else 
+      render head :not_found
+    end
   end
 
   def create
@@ -70,8 +73,13 @@ class Api::UsersController < Api::ApiController
     render json: lists, each_serializer: CompleteListSerializer
     # lists = current_user.followed_users.map(&:lists).flatten
     # lists = current_user.followed_users.flat_map(&:lists)
-    
   end
+
+  def find_users
+    render json: User.where('name LIKE ?', "#{params[:name]}%").all, each_serializer simplify
+    # render json: User.where('name LIKE ?', "#{search_users_params[:name]}%").all
+  end
+
 
   private
     def find_user_by_id
@@ -86,5 +94,9 @@ class Api::UsersController < Api::ApiController
 
     def followed_params
       params.permit(:user_id)
+    end
+
+    def search_users_params
+      params.permit(:name)
     end
 end

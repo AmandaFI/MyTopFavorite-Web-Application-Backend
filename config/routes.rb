@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       get :followed_users, on: :collection
       get :followers, on: :collection
       get :followed_users_lists, on: :collection
+      post :find_users, on: :collection
     end
 
   end
