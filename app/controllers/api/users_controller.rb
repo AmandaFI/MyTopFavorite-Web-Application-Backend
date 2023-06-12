@@ -76,7 +76,7 @@ class Api::UsersController < Api::ApiController
   end
 
   def find_users
-    render json: User.where('name LIKE ?', "#{params[:name]}%").all, each_serializer simplify
+    render json: User.where('name LIKE ?', "#{params[:name]}%").all#, each_serializer simplify
     # render json: User.where('name LIKE ?', "#{search_users_params[:name]}%").all
   end
 
@@ -89,7 +89,7 @@ class Api::UsersController < Api::ApiController
     # Only allow a list of trusted parameters through.
     # On this case, create_params and update_params are the same
     def user_params
-      params.permit(:email, :encrypted_password, :name)
+      params.permit(:email, :password, :name)
     end
 
     def followed_params

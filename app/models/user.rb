@@ -2,12 +2,12 @@
 #
 # Table name: users
 #
-#  id                 :integer          not null, primary key
-#  email              :string           not null
-#  encrypted_password :string           not null
-#  name               :string           not null
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
+#  id         :integer          not null, primary key
+#  email      :string           not null
+#  name       :string           not null
+#  password   :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 # Indexes
 #
@@ -20,14 +20,14 @@ class User < ApplicationRecord
   has_and_belongs_to_many :liked_lists, class_name: "List"
 
 
-  validates :name, :email, :encrypted_password, presence: true
+  validates :name, :email, :password, presence: true
 
   # singleton method --> método de classe (ruby em tese possui somente metodo de instancia pois tecnicamente toda classe é uma instancia de outra classe)
   def self.authenticate(email, password)
     # Todas as versões abaixo funcionam
     # User.exists? email: email, password: password
     # exists? email: email, encrypted_password: password
-    User.find_by(email: email, encrypted_password: password) 
+    User.find_by(email: email, password: password) 
 
   end
 end
