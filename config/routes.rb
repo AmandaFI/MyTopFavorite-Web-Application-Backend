@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       post :like, on: :member
       delete :dislike, on: :member
       get :draft_lists, on: :collection
-      get :published_lists, on: :collection
+      get :published_lists, on: :member
     end
 
     resources :users, only: [ :index, :create, :show, :update, :destroy ] do

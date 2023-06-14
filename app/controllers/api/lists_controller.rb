@@ -71,7 +71,7 @@ class Api::ListsController < Api::ApiController
 
   def published_lists
     if @user
-      if params[:complete_and_paginated]
+      if params[:page]
         render json: @user.lists.published.order(updated_at: :desc).limit(per_page).offset(per_page * (page - 1)), each_serializer: CompleteListSerializer
       else
         render json: @user.lists.published.order(updated_at: :desc)

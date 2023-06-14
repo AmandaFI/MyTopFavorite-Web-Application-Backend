@@ -39,7 +39,7 @@ class Api::UsersController < Api::ApiController
   end
 
   def follow
-    user_to_be_followed = User.find(followed_params[:user_id])
+    user_to_be_followed = User.find(params[:user_id])
 
     if current_user.followed_users << user_to_be_followed
       render json: user_to_be_followed, status: :created
@@ -49,7 +49,7 @@ class Api::UsersController < Api::ApiController
   end
 
   def unfollow
-    user_to_be_unfollowed = User.find(followed_params[:user_id])
+    user_to_be_unfollowed = User.find(params[:user_id])
     if current_user.followed_users.delete(user_to_be_unfollowed)
       head :no_content
     else
@@ -92,9 +92,9 @@ class Api::UsersController < Api::ApiController
       params.permit(:email, :password, :name)
     end
 
-    def followed_params
-      params.permit(:user_id)
-    end
+    # def followed_params
+    #   params.permit(:user_id)
+    # end
 
     def search_users_params
       params.permit(:name)
