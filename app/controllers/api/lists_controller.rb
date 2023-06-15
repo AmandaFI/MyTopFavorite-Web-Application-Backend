@@ -1,6 +1,6 @@
 class Api::ListsController < Api::ApiController
   before_action :find_list, only: [ :show, :update, :destroy, :like, :dislike ]
-  before_action :find_user_by_id, only: [ :draft_lists, :published_lists, :index  ]
+  before_action :find_user_by_id, only: [ :published_lists, :index  ]
 
 
   def index
@@ -62,11 +62,7 @@ class Api::ListsController < Api::ApiController
   end
 
   def draft_lists
-    if @user
-      render json: @user.lists.draft.order(updated_at: :desc)
-    else 
-      render head :not_found
-    end
+    render json: current_user.lists.draft.order(updated_at: :desc)
   end
 
   def published_lists
