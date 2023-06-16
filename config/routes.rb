@@ -29,6 +29,7 @@ Rails.application.routes.draw do
       get :followers, on: :collection
       get :followed_users_lists, on: :collection
       post :find_users, on: :collection
+      get :check_following, on: :member
     end
 
   end

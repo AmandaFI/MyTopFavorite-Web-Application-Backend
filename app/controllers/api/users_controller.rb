@@ -80,6 +80,15 @@ class Api::UsersController < Api::ApiController
     # render json: User.where('name LIKE ?', "#{search_users_params[:name]}%").all
   end
 
+  def check_following
+    followed_user = current_user.followed_users.find(params[:id])
+    if followed_user
+      render json: followed_user
+    else 
+      render head :not_found
+    end
+  end
+
 
   private
     def find_user_by_id
