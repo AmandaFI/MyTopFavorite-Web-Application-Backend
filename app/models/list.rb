@@ -37,4 +37,5 @@ class List < ApplicationRecord
     # o mesmo que self.items.count
     items.count
   end
+
 end

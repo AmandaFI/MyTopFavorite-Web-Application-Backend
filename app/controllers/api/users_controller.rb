@@ -70,7 +70,7 @@ class Api::UsersController < Api::ApiController
     lists = current_user.followed_users.flat_map do |user| 
       user.lists.published.order(created_at: :desc).limit(per_page).offset(per_page * (page - 1))
     end
-    render json: lists, each_serializer: CompleteListSerializer
+    render json: lists, each_serializer: CompleteListSerializer, current_user: current_user  #, current_user: @current_user# scope: {current_user: @current_user}
     # lists = current_user.followed_users.map(&:lists).flatten
     # lists = current_user.followed_users.flat_map(&:lists)
   end
@@ -82,7 +82,8 @@ class Api::UsersController < Api::ApiController
 
   def check_following
     followed_user = current_user.followed_users.find(params[:id])
-    if followed_user
+    # followed_user = current_user.followed_users.where(id: params[:id])
+    if followed_user#.present?
       render json: followed_user
     else 
       render head :not_found

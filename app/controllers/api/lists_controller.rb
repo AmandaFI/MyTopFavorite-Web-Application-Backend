@@ -13,7 +13,7 @@ class Api::ListsController < Api::ApiController
   end
 
   def show
-    render json: @list, serializer: CompleteListSerializer
+    render json: @list, serializer: CompleteListSerializer, current_user: current_user
   end
 
   def create
@@ -68,7 +68,7 @@ class Api::ListsController < Api::ApiController
   def published_lists
     if @user
       if params[:page]
-        render json: @user.lists.published.order(updated_at: :desc).limit(per_page).offset(per_page * (page - 1)), each_serializer: CompleteListSerializer
+        render json: @user.lists.published.order(updated_at: :desc).limit(per_page).offset(per_page * (page - 1)), each_serializer: CompleteListSerializer, current_user: current_user
       else
         render json: @user.lists.published.order(updated_at: :desc)
       end
