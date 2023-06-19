@@ -9,10 +9,18 @@ Faker::Config.locale = :en
 
 
 puts 'Generating categories...\n'
-categories = 50.times.map do |i|
+# categories = 50.times.map do |i|
+#   print '.'
+#   Category.create! name: Faker::Commerce.unique.department
+# end
+
+possible_categories = ["Filmes", "Séries", "Pessoas"]
+categories = possible_categories.map do |i|
   print '.'
-  Category.create! name: Faker::Commerce.unique.department
+  Category.create! name: i
 end
+
+
 
 # puts categories.map(&:name)
 puts 'Generating users...\n'
