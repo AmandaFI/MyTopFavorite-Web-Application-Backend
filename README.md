@@ -37,7 +37,7 @@ While running both, back end and front end locally, the rack-cors gem was used t
 - [Ruby](https://www.ruby-lang.org/pt/) version 3.1.4
 - [Ruby on Rails](https://rubyonrails.org/) version 7.0.5
 - [rbenv](https://github.com/rbenv/rbenv) version 1.2.0
-- Rails gem [sqlite3](https://rubygems.org/gems/sqlite3/versions/1.3.11?locale=pt-BR) version 1.4
+- [sqlite3 gem](https://rubygems.org/gems/sqlite3/versions/1.3.11?locale=pt-BR) version 1.4
 - [Thunder Client](https://www.thunderclient.com/)
 - [rack-cors gem](https://github.com/cyu/rack-cors) version 2.0
 - [Faker gem](https://github.com/faker-ruby/faker) version 3.2
