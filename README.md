@@ -50,7 +50,7 @@ If your system does not meet the mentioned prerequisites the following instructi
 1 - Install rbenv by cloning its repository and configuring the shell system. Run the following sequence of commands on a bash terminal.
 
 ```bash
-git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+$ git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 ```
 
 For Ubuntu systems:
@@ -107,7 +107,7 @@ $ gem install rails --version “7.0.5”
 
 ## **Getting Started** <a name="getting-started"></a>
 
-If your systems meet the mentioned prerequisites just clone this repository and run the following initialization commands:
+If your system meets the mentioned prerequisites just clone this repository and run the following initialization commands:
 
 ```bash
 $ git clone https://github.com/AmandaFI/MyTopFavorite-Web-Application-Backend.git
