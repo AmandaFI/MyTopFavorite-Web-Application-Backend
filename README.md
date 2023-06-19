@@ -24,9 +24,13 @@ The platform implementation is split into two repositories. This repository cont
 
 The API was implemented using the Ruby programming language and the Ruby on Rails framework following the REST architectural design pattern and the Model–view–controller (MVC) software design pattern. The chosen SQL database was SQlite and the Object Relational Mapping (ORM) system used was the Active Record.
 
+For testing and validation of the API endpoints, the Visual Code extension Thunder Client was used.
+
 As mentioned in the [overview](#Overview) section, only registered users can interact with the platform features, therefore the authentication process was implemented using sessions and cookies.
 
-For testing and validation of the API endpoints, the Visual Code extension Thunder Client was used.
+Among the many features provided by this application, a logged user is able to access certain pages to see and interact ('Like') with lists shared by the users he follows. From the API point of view, lists displayed on this areas are fetched using the offset pagination type.
+
+While running both, back end and front end locally, the rack-cors gem was used to avoid Cross-Origin Resource Sharing (CORS) problems.
 
 ## **Technologies** <a name="technologies"></a>
 
@@ -35,6 +39,8 @@ For testing and validation of the API endpoints, the Visual Code extension Thund
 - [rbenv](https://github.com/rbenv/rbenv) version 1.2.0
 - Rails gem [sqlite3](https://rubygems.org/gems/sqlite3/versions/1.3.11?locale=pt-BR) version 1.4
 - [Thunder Client](https://www.thunderclient.com/)
+- [rack-cors gem](https://github.com/cyu/rack-cors) version 2.0
+- [Faker gem](https://github.com/faker-ruby/faker) version 3.2
 
 ## **Installation** <a name="installation"></a>
 
@@ -122,7 +128,7 @@ $ rails db:setup
 $ rails db:migrate
 ```
 
-Observation: the file db/seeds.rb contains a mock data set that can be used to populate the database using the command:
+Observation: the file db/seeds.rb contains a mock data set, built with the Faker gem, that can be used to populate the database using the command:
 
 ```bash
 $ rails db:seed
@@ -133,3 +139,5 @@ Finally run the API server:
 ```bash
 $ rails s
 ```
+
+By default, the Rails server runs on http://127.0.0.1:3000, however this can be changed if necessary.
