@@ -2,23 +2,23 @@
 
 ## Table of Content
 
-1. [Application Overview](#Overview)
-2. [Back End Description](#BackEnd)
-3. [Technologies](#Technologies)
-4. [Installation](#Installation)
-5. [Getting Started](#GettingStarted)
+1. [Application Overview](#application-overview)
+2. [Back End Description](#back-end-description)
+3. [Technologies](#technologies)
+4. [Installation](#installation)
+5. [Getting Started](#getting-started)
 
 ---
 
-## **Application Overview** <a name="Overview"></a>
+## **Application Overview** <a name="application-overview"></a>
 
-My Top Favorite is a social media platform where registered users can create, edit and share lists containing a rank of their favorite things of a certain theme. Along with each list item, the user has the option to attach a personalized text talking about the chosen item.
+My Top Favorite is a social media platform where registered users can create, edit and share lists containing a rank of their favorite things of a certain theme. Along with each list item, the user has the option to attach a personalized text talking about the chosen item. Users can also follow other users to keep up with their listings.
 
 The platform is integrated with external APIs, therefore, when creating a list, the user can search for items belonging to that theme in reliable sources. As an example, a user creating a list of his favorite action movies will be able to search for them in the collection of the Tmdb platform.
 
 Currently the platform supports lists with themes related to movies, series and public personalities.The theme possibilities are endless and new themes will be supported soon!
 
-## **Back End Description** <a name="BackEnd"></a>
+## **Back End Description** <a name="back-end-description"></a>
 
 The platform implementation is split into two repositories. This repository contains the back end (API) and [this repository](https://github.com/AmandaFI/MyTopFavorite-Web-Application-Frontend) contains the front end implementation using React.
 
@@ -28,7 +28,7 @@ As mentioned in the [overview](#Overview) section, only registered users can int
 
 For testing and validation of the API endpoints, the Visual Code extension Thunder Client was used.
 
-## **Technologies** <a name="Technologies"></a>
+## **Technologies** <a name="technologies"></a>
 
 - [Ruby](https://www.ruby-lang.org/pt/) version 3.1.4
 - [Ruby on Rails](https://rubyonrails.org/) version 7.0.5
@@ -36,7 +36,7 @@ For testing and validation of the API endpoints, the Visual Code extension Thund
 - Rails gem [sqlite3](https://rubygems.org/gems/sqlite3/versions/1.3.11?locale=pt-BR) version 1.4
 - [Thunder Client](https://www.thunderclient.com/)
 
-## **Installation** <a name="Installation"></a>
+## **Installation** <a name="installation"></a>
 
 To run this project locally the following prerequisites are necessary:
 
@@ -105,7 +105,7 @@ $ brew install rbenv ruby-build
 $ gem install rails --version “7.0.5”
 ```
 
-## **Getting Started** <a name="GettingStarted"></a>
+## **Getting Started** <a name="getting-started"></a>
 
 If your systems meet the mentioned prerequisites just clone this repository and run the following initialization commands:
 
