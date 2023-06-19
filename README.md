@@ -93,7 +93,7 @@ $ gem install rails
 $ brew install rbenv ruby-build
 ```
 
-Follow steps 3 and 4 from the Linux installation.
+2 - Follow steps 3 and 4 from the Linux installation.
 
 ### **Windows systems**
 
