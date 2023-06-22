@@ -8,5 +8,5 @@ Faker::Config.locale = :en
 # end
 
 
-User.create! name: "testUser5", email: "test@user5.com.com", password: '12345'
-User.create! name: "testUser7", email: "test@user7.com", password: '12345'
+# User.create! name: "testUser5", email: "test@user5.com.com", password: '12345'
+# User.create! name: "testUser7", email: "test@user7.com", password: '12345'
