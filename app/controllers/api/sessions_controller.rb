@@ -1,6 +1,7 @@
 class Api::SessionsController < Api::ApiController
 
   skip_before_action :authenticate_user, only: :create
+  skip_before_action :authenticate_user, only: :create
 
   # login
   def create
