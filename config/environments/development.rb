@@ -69,5 +69,5 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   # dominio mapeado para 127.0.0.1 no arquivo /etc/hosts
-  config.hosts << "mytopfavorite.com"
+  # config.hosts << "mytopfavorite.com"
 end
