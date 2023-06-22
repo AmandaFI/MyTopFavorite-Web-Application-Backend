@@ -8,5 +8,5 @@ categories = possible_categories.map do |i|
 end
 
 
-User.create! name: "afi", email: "a@fi.com", password: '12345'
-User.create! name: "testUser", email: "test@user.com", password: '12345'
+User.create! name: "testUser2", email: "test@user2.com.com", password: '12345'
+User.create! name: "testUser3", email: "test@user3.com", password: '12345'
