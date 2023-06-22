@@ -4,20 +4,10 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem "sqlite3"
 #
-# ------------------- sqlite
-# default: &default
-#   adapter: sqlite3
-#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-#   timeout: 5000
-
-# ------------------ postgres
-
 default: &default
-  adapter: postgresql
-  encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  adapter: sqlite3
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
 
 development:
   <<: *default
@@ -30,16 +20,6 @@ test:
   <<: *default
   database: db/test.sqlite3
 
-# production:
-#   <<: *default
-#   database: db/production.sqlite3
-
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
-
-production:
-  <<: *default
-  database: mysite_production
-  username: mysite
-  password: <%= ENV['MYSITE_DATABASE_PASSWORD'] %>
+  database: db/production.sqlite3
