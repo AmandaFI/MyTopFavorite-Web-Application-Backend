@@ -7,7 +7,8 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'https://mytopfavoriteinterface.onrender.com'
+    # origins 'https://mytopfavoriteinterface.onrender.com'
+    origins /\A/\d{,2}|1\d{2}|2[0-4]\d|25[0-5]/\./\d{,2}|1\d{2}|2[0-4]\d|25[0-5]/\./\d{,2}|1\d{2}|2[0-4]\d|25[0-5]/\./\d{,2}|1\d{2}|2[0-4]\d|25[0-5]/\z/
     resource '*', headers: :any, methods: :any, credentials: true
   end
 end
