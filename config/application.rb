@@ -19,6 +19,6 @@ module MyTopFavoriteBackend
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    config.session_store :cookie_store, key: '_session_id', same_site: :none
+    config.session_store :cookie_store, key: '_session_id', same_site: :none, secure: true
   end
 end
