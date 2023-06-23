@@ -73,7 +73,7 @@ class Api::ListsController < Api::ApiController
         render json: @user.lists.published.order(updated_at: :desc)
       end
     else
-      render head :not_found
+      head :not_found
     end
   end
 

@@ -36,6 +36,7 @@ class Api::ApiController < ApplicationController
       end
     end
 
+   
     def logged_in?
       !!@current_user  
       # primiero ! transforma @current_user em boolean e o nega (será false), 

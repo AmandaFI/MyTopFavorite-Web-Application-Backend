@@ -86,7 +86,7 @@ class Api::UsersController < Api::ApiController
     if followed_user#.present?
       render json: followed_user
     else 
-      render head :not_found
+      head :not_found
     end
   end
 

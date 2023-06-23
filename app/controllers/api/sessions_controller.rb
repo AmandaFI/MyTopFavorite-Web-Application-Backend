@@ -14,7 +14,7 @@ class Api::SessionsController < Api::ApiController
       # session[:logged_user_id] = nil
       session.delete :logged_user_id
 
-      head :not_found
+      head :unauthorized
     end
   end
 
