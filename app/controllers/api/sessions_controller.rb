@@ -7,19 +7,20 @@ class Api::SessionsController < Api::ApiController
     user = User.authenticate(params[:email], params[:password])
 
     if user
-      session[:logged_user_id] = user.id
+      token = encode_jwt(user_id: user.id)
+      headers["Authorization"] = "Bearer #{token}"
+
       render json: user, status: :created
     else
-      # session[:logged_user_id] = nil
-      session.delete :logged_user_id
-
+      headers.delete_if { |key| key == "Authorization" }
       head :not_found
     end
   end
 
-  # logout
+  # logout - esse endpoint não é necessário pois basta deletar o token do lado cliente
+  # servidor é stateless, nem sabe da existência desse token
   def destroy
-    session.delete :logged_user_id
+    headers.delete_if { |key| key == "Authorization" }
 
     head :no_content
   end

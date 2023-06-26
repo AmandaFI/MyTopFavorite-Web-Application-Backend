@@ -78,3 +78,5 @@ gem "faker", "~> 3.2"
 gem "annotate", "~> 3.2"
 
 gem 'rack-cors', "~> 2.0"
+
+gem 'jwt'
