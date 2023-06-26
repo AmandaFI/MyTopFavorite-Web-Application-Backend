@@ -26,7 +26,7 @@ The API was implemented using the Ruby programming language and the Ruby on Rail
 
 For testing and validation of the API endpoints, the Visual Code extension Thunder Client was used.
 
-As mentioned in the [overview](#Overview) section, only registered users can interact with the platform features, therefore the authentication process was implemented using sessions and cookies.
+As mentioned in the [overview](#Overview) section, only registered users can interact with the platform features, therefore the authentication process was implemented. The main branch implements authentication using sessions and cookies. The jwt-authentication-version branch implements authentication following the OAuth 2 Bearer Token technique using JSON Web Tokens (JWT).
 
 Among the many features provided by this application, a logged user is able to access certain pages to see and interact ('Like') with lists shared by the users he follows. From the API point of view, lists displayed on this areas are fetched using the offset pagination type.
 
@@ -41,6 +41,7 @@ While running both, back end and front end locally, the rack-cors gem was used t
 - [Thunder Client](https://www.thunderclient.com/)
 - [rack-cors gem](https://github.com/cyu/rack-cors) version 2.0
 - [Faker gem](https://github.com/faker-ruby/faker) version 3.2
+- [JWT](https://jwt.io/libraries)
 
 ## **Installation** <a name="installation"></a>
 
