@@ -1,11 +1,11 @@
 class Api::UsersController < Api::ApiController
 
   skip_before_action :authenticate_user, only: [ :create ]
-  before_action :find_user_by_id, only: [ :destroy, :show ]
+  before_action :find_user_by_id, only: [ :destroy, :show, :update ]
 
   def index
     @users = User.all
-    render json: @users
+    render json: @users, each_serializer: BasicUserSerializer
   end
 
   def show
@@ -19,17 +19,17 @@ class Api::UsersController < Api::ApiController
   def create
       @user = User.new(user_params)
       if @user.save
-        render json: @user, status: :created
+        render json: @user, status: :created, serializer: BasicUserSerializer
       else
         render json: {errors: @user.errors.full_messages, status: :unprocessable_entity}
       end
   end
 
   def update
-      if current_user.update(user_params)
-        render json: current_user, status: :ok
+      if @user.update(user_params)
+        render json: @user, status: :ok
       else
-        render json: {errors: current_user.errors.full_messages}, status: :unprocessable_entity
+        render json: {errors: @user.errors.full_messages}, status: :unprocessable_entity
       end
   end
 
@@ -58,7 +58,7 @@ class Api::UsersController < Api::ApiController
   end
 
   def followed_users
-    render json: current_user.followed_users
+    render json: current_user.followed_users, each_serializer: BasicUserSerializer
   end
 
   def followers
@@ -76,7 +76,7 @@ class Api::UsersController < Api::ApiController
   end
 
   def find_users
-    render json: User.where('name LIKE ?', "#{params[:name]}%").all#, each_serializer simplify
+    render json: User.where('name LIKE ?', "#{params[:name]}%").all, each_serializer: BasicUserSerializer
     # render json: User.where('name LIKE ?', "#{search_users_params[:name]}%").all
   end
 
@@ -84,7 +84,7 @@ class Api::UsersController < Api::ApiController
     followed_user = current_user.followed_users.find(params[:id])
     # followed_user = current_user.followed_users.where(id: params[:id])
     if followed_user#.present?
-      render json: followed_user
+      render json: followed_user, serializer: BasicUserSerializer
     else 
       render head :not_found
     end
