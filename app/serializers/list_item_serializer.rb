@@ -24,5 +24,5 @@
 class ListItemSerializer < ActiveModel::Serializer
   attributes :id, :external_api_identifier, :image_url, :details, :rank, :title, :user_comment
 
-  belongs_to :list
+  belongs_to :list #, serializer: SimplifiedListSerializer
 end

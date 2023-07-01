@@ -1,15 +1,11 @@
 class Api::ListsController < Api::ApiController
   before_action :find_list, only: [ :show, :update, :destroy, :like, :dislike ]
-  before_action :find_user_by_id, only: [ :published_lists, :index  ]
+  before_action :find_user_by_id, only: [ :published_lists  ]
 
 
   def index
-    if @user
-      render json: @user.lists.order(updated_at: :desc)
+      render json: current_user.lists.order(updated_at: :desc)
       #.limit(per_page).offset(per_page * (page - 1))
-    else
-      render head :not_found
-    end
   end
 
   def show
@@ -17,8 +13,8 @@ class Api::ListsController < Api::ApiController
   end
 
   def create
-    # list = current_user.lists << List.new(list_params)
-    current_user.lists << List.new(list_params)
+    # list = current_user.lists << List.new(create_params)
+    current_user.lists << List.new(create_params)
     list = current_user.lists.last
 
       if list.save
@@ -29,7 +25,7 @@ class Api::ListsController < Api::ApiController
   end
 
   def update
-      if @list.update(list_params)
+      if @list.update(update_params)
         render json: @list, status: :ok
       else
         render json: {errors: @list.errorsfull_messages, status: :unprocessable_entity}
@@ -86,8 +82,12 @@ class Api::ListsController < Api::ApiController
       @user = User.find(params[:id])
     end
 
-    def list_params
+    def create_params
       params.permit(:title, :category_id, :draft)
+    end
+
+    def update_params
+      params.permit(:title, :draft)
     end
   
 end
