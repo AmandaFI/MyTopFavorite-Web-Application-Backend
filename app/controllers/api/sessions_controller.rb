@@ -4,7 +4,7 @@ class Api::SessionsController < Api::ApiController
 
   # login
   def create
-    user = User.authenticate(params[:email], params[:password])
+    user = User.authenticate_user(params[:email], params[:password])
 
     if user
       session[:logged_user_id] = user.id
