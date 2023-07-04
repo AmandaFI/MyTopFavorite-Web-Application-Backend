@@ -80,3 +80,9 @@ gem "annotate", "~> 3.2"
 gem 'rack-cors', "~> 2.0"
 
 gem 'bcrypt', '~> 3.1.7'
+
+gem 'graphql'
+
+group :development do
+  gem 'graphiql-rails'
+end
