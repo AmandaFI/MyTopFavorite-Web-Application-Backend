@@ -1,7 +1,7 @@
 class CompleteListSerializer < ActiveModel::Serializer
   attributes :id, :title, :likers_count, :draft, :created_at, :liked_by_current_user
   belongs_to :category
-  belongs_to :user
+  belongs_to :user, serializer: BasicUserSerializer
   has_many :items, class_name: "ListItem"
 
   def likers_count

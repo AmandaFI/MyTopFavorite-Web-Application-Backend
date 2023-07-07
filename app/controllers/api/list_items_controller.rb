@@ -3,7 +3,7 @@ class   Api::ListItemsController < Api::ApiController
   before_action :find_list, only: [ :index, :create ]
 
   def index
-    render json: @list.items
+    render json: @list.items, each_serializer: SimplifiedListItemSerializer
   end
 
   def show

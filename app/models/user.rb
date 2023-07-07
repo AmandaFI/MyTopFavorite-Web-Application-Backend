@@ -30,8 +30,8 @@ class User < ApplicationRecord
     # Todas as versões abaixo funcionam
     # User.exists? email: email, password: password
     # exists? email: email, encrypted_password: password
-    # User.find_by(email: email, password: password) # sem encriptação de senha
 
+    # User.find_by(email: email, password: password) # sem encriptação de senha
     User.find_by(email: email)&.authenticate(password)  # com encriptação de senha
 
   end

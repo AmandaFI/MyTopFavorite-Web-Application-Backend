@@ -8,7 +8,7 @@ class Api::SessionsController < Api::ApiController
 
     if user
       session[:logged_user_id] = user.id
-      render json: user, status: :created
+      render json: user, status: :created, serializer: BasicUserSerializer
     else
       # session[:logged_user_id] = nil
       session.delete :logged_user_id

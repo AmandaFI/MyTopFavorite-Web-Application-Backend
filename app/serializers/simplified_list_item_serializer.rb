@@ -21,8 +21,7 @@
 #
 #  list_id  (list_id => lists.id) ON DELETE => cascade
 #
-class ListItemSerializer < ActiveModel::Serializer
-  attributes :id, :external_api_identifier, :image_url, :details, :rank, :title, :user_comment
-
-  belongs_to :list, serializer: SimplifiedListSerializer
+class SimplifiedListItemSerializer < ActiveModel::Serializer
+    attributes :id, :external_api_identifier, :image_url, :details, :rank, :title, :user_comment
 end
+  
