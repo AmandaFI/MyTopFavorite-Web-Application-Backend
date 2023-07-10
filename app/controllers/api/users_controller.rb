@@ -27,7 +27,7 @@ class Api::UsersController < Api::ApiController
 
   def update
       if @user.update(user_params)
-        render json: @user, status: :ok
+        render json: @user, status: :ok, serializer: BasicUserSerializer
       else
         render json: {errors: @user.errors.full_messages}, status: :unprocessable_entity
       end
@@ -42,7 +42,7 @@ class Api::UsersController < Api::ApiController
     user_to_be_followed = User.find(params[:user_id])
 
     if current_user.followed_users << user_to_be_followed
-      render json: user_to_be_followed, status: :created
+      render json: user_to_be_followed, status: :created, serializer: BasicUserSerializer
     else
       render json: user_to_be_followed.errors.full_messages, status: :unprocessable_entity
     end 
@@ -62,7 +62,7 @@ class Api::UsersController < Api::ApiController
   end
 
   def followers
-    render json: current_user.followers
+    render json: current_user.followers, each_serializer: BasicUserSerializer
   end
 
   def followed_users_lists

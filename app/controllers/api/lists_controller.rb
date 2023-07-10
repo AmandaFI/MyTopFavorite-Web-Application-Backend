@@ -42,7 +42,7 @@ class Api::ListsController < Api::ApiController
   def like
 
     if @list.likers << current_user
-      render json: current_user, status: :created
+      render json: current_user, status: :created, serializer: BasicUserSerializer
     else
       render json: current_user.errors.full_messages, status: :unprocessable_entity
     end
