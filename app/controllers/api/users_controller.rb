@@ -27,7 +27,7 @@ class Api::UsersController < Api::ApiController
 
   def update
       if @user.update(user_params)
-        render json: @user, status: :ok, serializer: BasicUserSerializer
+        render json: @user, status: :ok, serializer: UserSerializer
       else
         render json: {errors: @user.errors.full_messages}, status: :unprocessable_entity
       end
