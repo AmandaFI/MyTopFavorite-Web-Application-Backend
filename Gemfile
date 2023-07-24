@@ -86,3 +86,5 @@ gem 'graphql'
 group :development do
   gem 'graphiql-rails'
 end
+
+gem 'jwt', '~> 2.7.1'

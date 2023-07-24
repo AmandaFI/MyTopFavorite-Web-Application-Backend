@@ -8,7 +8,7 @@ module Types
     # password_digest removido
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
 
-    filed :lists, [Types::ListType], null: true
+    field :lists, [Types::ListType], null: true
     field :followers, [Types::UserType], null: true
     field :followed_users, [Types::UserType], null: true
     field :liked_lists, [Types::ListType], null: true
