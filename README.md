@@ -22,7 +22,9 @@ Currently the platform supports lists with themes related to movies, series and 
 
 The platform has two fully functional back end (API) implementations that are interchangeable and this repository contains the Ruby on Rails version. The NestJS version can be found in [this repository](https://github.com/AmandaFI/MyTopFavorite-Web-Application-Backend-2) and the React front end implementation can be found in [this repository](https://github.com/AmandaFI/MyTopFavorite-Web-Application-Frontend).
 
-The API was implemented using the Ruby programming language and the Ruby on Rails framework following the REST architectural design pattern and the Model–view–controller (MVC) software design pattern. The chosen SQL database was SQlite and the Object Relational Mapping (ORM) system used was the Active Record.
+The branch 'graphql-jwt-version' on this repository contains the same Ruby on Rails API but implemented using the query language GraphQL.
+
+The API was implemented using the Ruby programming language and the Ruby on Rails framework following the REST architectural design pattern and the Model–view–controller (MVC) software design pattern.The chosen SQL database was SQlite and the Object Relational Mapping (ORM) system used was the Active Record.
 
 For testing and validation of the API endpoints, the Visual Code extension Thunder Client was used.
 
@@ -42,6 +44,7 @@ While running both, back end and front end locally, the rack-cors gem was used t
 - [rack-cors gem](https://github.com/cyu/rack-cors) version 2.0
 - [Faker gem](https://github.com/faker-ruby/faker) version 3.2
 - [JWT](https://jwt.io/libraries)
+- [GraphQL](https://graphql.org/)
 
 ## **Installation** <a name="installation"></a>
 
