@@ -33,6 +33,5 @@ class User < ApplicationRecord
     # User.find_by(email: email, password: password) # sem encriptação de senha
 
     User.find_by(email: email)&.authenticate(password)  # com encriptação de senha
-
   end
 end
