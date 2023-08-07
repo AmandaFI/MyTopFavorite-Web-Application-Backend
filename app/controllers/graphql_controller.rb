@@ -4,6 +4,8 @@ class GraphqlController < ApplicationController
   # but you'll have to authenticate your user separately
   # protect_from_forgery with: :null_session
 
+  skip_before_action :verify_authenticity_token
+
   def execute
     variables = prepare_variables(params[:variables])
     query = params[:query]
@@ -12,7 +14,7 @@ class GraphqlController < ApplicationController
       # Query context goes here, for example:
       current_user: current_user,
       lolgged_in?: logged_in?,
-      login: ->(user) {login user}    # passando a função e não o resultado de sua chamada, uma proc. Essa proc recebe um user e chama a funçaõ login passando o user como parametro
+      login: ->(user) { login user }    # passando a função e não o resultado de sua chamada, uma proc. Essa proc recebe um user e chama a funçaõ login passando o user como parametro
     }
     result = MyTopFavoriteBackendSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
     render json: result
