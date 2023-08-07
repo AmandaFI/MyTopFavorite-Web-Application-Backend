@@ -69,8 +69,9 @@ module Types
       current_user.followers
     end
 
-    field :checkFollowing, Boolean, "Checks if the logged user follows a given user.", null: false
+    field :checkFollowing, Boolean, "Checks if the logged user follows a given user.", null: false do
       argument :id, ID, required: true
+    end
     def checkFollowing
       require_authentication!
 
