@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    HMAC_SECRET = "secretword"
+  HMAC_SECRET = "secretword"
 
 	def login(user)
 		token = encode_jwt(user_id: user.id)
